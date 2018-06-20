@@ -11,5 +11,5 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Author
+        model = Book
         exclude = []

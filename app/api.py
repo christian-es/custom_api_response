@@ -41,3 +41,20 @@ class BookViewSet(ModelViewSet):
             json_response_list.append(data)
 
         return Response(json_response_list)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+
+        author_book = {
+            "name": serializer.instance.author.name,
+            "alias": serializer.instance.author.alias
+        }
+
+        data = {
+            "title": serializer.instance.title,
+            "pages": serializer.instance.pages,
+            "author": author_book
+        }
+
+        return Response(data)
